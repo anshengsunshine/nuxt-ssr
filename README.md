@@ -3,6 +3,25 @@ vue-ssr：nuxt-服务端渲染；
 # 可参考博客：http://blog.zhanghaoran.ren/detail/2.html
 > *本篇笔记来自2020年10月全栈-Vue篇章 1-7-4 Vue07课后补充：nuxt实践、ssr自动构建*
 
+## Build Setup
+
+```bash
+# install dependencies
+$ npm install
+
+# serve with hot reload at localhost:3000
+$ npm run dev
+
+# build for production and launch server
+$ npm run build
+$ npm run start
+
+# generate static project
+$ npm run generate
+```
+
+For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
 
 # Nuxt.js实战
 Nuxt.js是一个基于 Vue.js的通用应用框架
