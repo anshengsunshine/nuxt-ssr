@@ -1,20 +1,19 @@
 <template>
   <div>
-    <Nuxt />
+    <nav>
+      <nuxt-link to="/">首页</nuxt-link>
+      <nuxt-link to="/admin" no-prefetch>管理</nuxt-link>
+      <nuxt-link to="/cart">购物车</nuxt-link>
+    </nav>
+    <!-- page中定义的内容 -->
+    <nuxt />
   </div>
 </template>
 
 <style>
 html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -25,8 +24,8 @@ html {
 }
 
 *,
-*::before,
-*::after {
+*:before,
+*:after {
   box-sizing: border-box;
   margin: 0;
 }

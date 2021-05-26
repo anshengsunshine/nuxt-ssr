@@ -1,40 +1,80 @@
-export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
-  head: {
-    title: 'ssr-nuxt',
-    htmlAttrs: {
-      lang: 'en'
+const pkg = require('./package')
+
+
+module.exports = {
+  mode: 'universal',
+
+  // router配置
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        path: '/foo',
+        component: resolve(__dirname, 'pages/othername.vue')
+      })
     },
+    // middleware: ['auth']
+  },
+
+  /*
+  ** Headers of the page
+  */
+  head: {
+    title: pkg.name,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
+  /*
+  ** Customize the progress-bar color
+  */
+  loading: { color: '#fff' },
+
+  /*
+  ** Global CSS
+  */
   css: [
+    'element-ui/lib/theme-chalk/index.css'
   ],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+  /*
+  ** Plugins to load before mounting the App
+  */
   plugins: [
+    '@/plugins/element-ui',
+    '@/plugins/api-inject',
+    '@/plugins/interceptor',
   ],
 
-  // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
-
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-  ],
-
-  // Modules: https://go.nuxtjs.dev/config-modules
+  /*
+  ** Nuxt.js modules
+  */
   modules: [
+    '@nuxtjs/axios',
+    "cookie-universal-nuxt"
   ],
+  axios: {
+    proxy: true
+  },
+  proxy: {
+    "/api": "http://localhost:8000"
+  },
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
+  /*
+  ** Build configuration
+  */
   build: {
+    transpile: [/^element-ui/],
+
+    /*
+    ** You can extend webpack config here
+    */
+    extend(config, ctx) {
+    }
   }
 }
